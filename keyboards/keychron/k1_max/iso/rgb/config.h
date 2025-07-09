@@ -15,6 +15,7 @@
  */
 
 #pragma once
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #ifdef RGB_MATRIX_ENABLE
 /* RGB Matrix driver configuration */
