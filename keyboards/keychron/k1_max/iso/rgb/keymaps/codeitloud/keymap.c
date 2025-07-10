@@ -66,17 +66,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-/*
 bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case MT(MOD_LSFT, KC_D):
             // Immediately select the hold action when another key is tapped.
             return true;
-        case MT(MOD_LSFT, KC_K):
+        case MT(MOD_RSFT, KC_K):
             return true;
         default:
             // Do not select the hold action when another key is tapped.
             return false;
     }
 }
-*/
