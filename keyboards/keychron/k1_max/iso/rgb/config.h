@@ -15,7 +15,8 @@
  */
 
 #pragma once
-#define PERMISSIVE_HOLD_PER_KEY
+#define PERMISSIVE_HOLD
+#define TAPPING_TERM 2000
 
 #ifdef RGB_MATRIX_ENABLE
 /* RGB Matrix driver configuration */
