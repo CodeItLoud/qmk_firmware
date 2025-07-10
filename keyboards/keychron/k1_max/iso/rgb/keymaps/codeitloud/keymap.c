@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,   KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     KC_LBRC,  KC_RBRC,            KC_DEL,   KC_END,   KC_PGDN,
         KC_CAPS,  KC_A,     KC_S,     MT(MOD_LSFT, KC_D),     KC_F,     KC_G,     KC_H,     KC_J,     MT(MOD_LSFT, KC_K),     KC_L,     KC_SCLN,  KC_QUOT,  KC_NUHS,  KC_ENT,
         KC_0,  KC_NUBS,  KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,     KC_COMM,  KC_DOT,   KC_SLSH,            KC_0,            KC_UP,
-        KC_LCTL,  KC_LWIN,  KC_LALT,                                MT(MOD_LSFT, KC_SPC),                                 KC_RALT,  KC_RGUI, MO(WIN_FN),KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+        KC_LCTL,  KC_LWIN,  KC_LALT,                                KC_SPC,                                 KC_RALT,  KC_RGUI, MO(WIN_FN),KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
     [WIN_FN] = LAYOUT_iso_88(
         _______,            KC_BRID,  KC_BRIU,  KC_TASK,  KC_FILE,  RGB_VAD,  RGB_VAI,  KC_MPRV,  KC_MPLY,  KC_MNXT,  KC_MUTE,  KC_VOLD,  KC_VOLU,  _______,  _______,  RGB_TOG,
@@ -66,13 +66,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case MT(MOD_LSFT, KC_SPC):
-            // Immediately select the hold action when another key is pressed.
+        case MT(MOD_LSFT, KC_D):
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        case MT(MOD_LSFT, KC_K):
             return true;
         default:
-            // Do not select the hold action when another key is pressed.
+            // Do not select the hold action when another key is tapped.
             return false;
     }
 }
